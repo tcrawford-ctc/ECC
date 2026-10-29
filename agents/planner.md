@@ -88,6 +88,12 @@ Create detailed steps with:
 - Integration tests: [flows to test]
 - E2E tests: [user journeys to test]
 
+## Feature Flags
+- Flags: [None, the feature ships on] or [flag name and where it is read]
+- Default: ON in code, seeds, migrations, and every environment (dev, QA, live)
+- OFF only for: [emergency kill switch, or explicitly parked by the owner; otherwise never]
+- Production enablement: [release or merge step that turns it on, not a later flip]
+
 ## Risks & Mitigations
 - **Risk**: [Description]
   - Mitigation: [How to address]
@@ -106,6 +112,7 @@ Create detailed steps with:
 5. **Enable Testing**: Structure changes to be easily testable
 6. **Think Incrementally**: Each step should be verifiable
 7. **Document Decisions**: Explain why, not just what
+8. **Flags Default ON**: Avoid flags for normal features. Any flag for a feature in use defaults ON everywhere and testers leave it ON after QA; OFF is only for an emergency kill switch or parked work, and production enablement is a release step
 
 ## Worked Example: Adding Stripe Subscriptions
 
