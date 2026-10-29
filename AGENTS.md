@@ -171,6 +171,16 @@ Troubleshoot failures: check test isolation → verify mocks → fix implementat
    - If there is no obvious project doc location, ask before creating a new top-level file
 5. **Commit** — Conventional commits format, comprehensive PR summaries
 
+## Feature Flags
+
+Feature flags default ON (TJ, 2026-10-29). Prefer no flag for a normal feature; ship it on.
+
+- If a flag or switch exists for a feature we plan to use, it defaults ON in code, seeds and migrations, and in every environment (dev, QA, live). Unset means ON.
+- Testers leave it ON after QA. Never switch it back OFF at the end of a test.
+- OFF is only for an emergency kill switch, or for something the owner has explicitly parked. A kill switch still defaults ON; it is turned OFF only during an emergency.
+- Turning it on in production or live is part of the release or merge step, not a later flip. The plan names that step.
+- A switch for a feature in use that defaults OFF is a bug; file it.
+
 ## Workflow Surface Policy
 
 - `skills/` is the canonical workflow surface.
